@@ -3,11 +3,16 @@ name: unbound_ci
 on:
   push:
     branches: master
+  schedule:
+    - cron: '0 1 * * 6'
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
