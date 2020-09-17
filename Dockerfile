@@ -5,7 +5,8 @@ LABEL maintainer="Hugo Ferreira"
 RUN apk update && \
     apk upgrade --available && \
     sync && \
-    apk add unbound bash
+    apk add unbound bash && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
 
 RUN wget -S https://www.internic.net/domain/named.cache -O /root.hints
 
