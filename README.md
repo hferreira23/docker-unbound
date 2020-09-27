@@ -18,8 +18,6 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-    environment:
-      TZ: Europe/Lisbon
     volumes:
       - ./unbound.conf:/unbound.conf
     restart: unless-stopped
