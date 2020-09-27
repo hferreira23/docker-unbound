@@ -15,7 +15,6 @@ services:
     image: hferreira23/unbound
     container_name: unbound
     networks:
-       - app_net
     ports:
       - "53:53/tcp"
       - "53:53/udp"
