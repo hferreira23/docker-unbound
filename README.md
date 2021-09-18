@@ -1,3 +1,5 @@
+[![unbound_ci](https://github.com/hferreira23/docker-unbound/actions/workflows/image.yml/badge.svg)](https://github.com/hferreira23/docker-unbound/actions/workflows/image.yml)
+
 **Unbound Docker Container**
 
 A Docker container running unbound. 
