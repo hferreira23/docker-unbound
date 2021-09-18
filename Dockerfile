@@ -2,11 +2,13 @@ FROM alpine:edge
 
 LABEL maintainer="Hugo Ferreira"
 
+RUN apk add --no-cache \
+    ca-certificates
+
 RUN apk update && \
-    apk upgrade --available && \
+    apk upgrade --no-cache --available && \
     sync && \
-    apk add unbound bash && \
-    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
+    apk add --no-cache unbound bash
 
 RUN wget -S https://www.internic.net/domain/named.cache -O /root.hints
 
