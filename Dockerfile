@@ -10,7 +10,7 @@ RUN apk update && \
     sync && \
     apk add --no-cache unbound bash
 
-RUN wget -S https://www.internic.net/domain/named.cache -O /root.hints
+RUN wget -S http://www.internic.net/domain/named.cache -O /root.hints
 
 RUN ln -sf /dev/stdout /unbound.log
 
