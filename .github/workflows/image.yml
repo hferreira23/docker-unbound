@@ -42,7 +42,7 @@ jobs:
       -
         name: Scan container
         id: scan
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v4
         with:
           image: "hferreira/unbound:latest"
           fail-build: true
