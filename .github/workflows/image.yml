@@ -14,7 +14,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -28,8 +28,33 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
-        name: Build and push
+        name: Build and load
         id: docker_build
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          load: true
+          tags: hferreira/unbound:latest
+      -
+        name: scan container
+        id: scan
+        uses: anchore/scan-action@v3
+        with:
+          image: "hferreira/unbound:latest"
+          fail-build: true
+          by-cve: true
+          severity-cutoff: high
+          output-format: sarif
+      - 
+        name: Upload SARIF file
+        id: upload_sarif
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
+      -
+        name: Build and push
+        id: docker_push
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
