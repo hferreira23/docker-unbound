@@ -35,14 +35,10 @@ jobs:
           push: false
           load: true
           tags: hferreira/unbound:latest
-      - 
-        name: Inspect action SARIF report
-        id: grype_db
-        run: grype db update -vvv
       -
         name: Scan container
         id: scan
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v4
         with:
           image: "hferreira/unbound:latest"
           fail-build: true
