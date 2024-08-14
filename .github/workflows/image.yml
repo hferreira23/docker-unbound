@@ -45,7 +45,6 @@ jobs:
           by-cve: true
           severity-cutoff: high
           output-format: sarif
-          grype-version: 0.79.6
       - 
         name: Upload SARIF file
         id: upload_sarif
