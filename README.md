@@ -11,7 +11,6 @@ A custom config can be passed to the container with -v (or volume definition on 
 Compose example:
 
 ```yaml
-version: "3.8"
 services:
   unbound:
     image: hferreira23/unbound
